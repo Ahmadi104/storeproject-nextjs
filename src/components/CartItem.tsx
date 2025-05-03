@@ -11,6 +11,7 @@ function CartItem() {
         <p>
           Pric:<span>45</span>
         </p>
+
         <div className="mt-6">
           <button className="bg-sky-500 px-6 py-1 rounded text-white">+</button>
           <span className="mx-5">3</span>

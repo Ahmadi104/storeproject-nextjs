@@ -4,31 +4,45 @@ import { usePathname } from "next/navigation";
 
 import React from "react";
 import Container from "./Container";
-import { title } from "process";
+import { useShoppingCartContext } from "@/context/ShopingCartContext";
 
 function Navbar() {
+  const { cartTotalQty } = useShoppingCartContext();
   const pathname = usePathname();
   const navLinks = [
     { title: "Home", href: "/" },
     { title: "Store", href: "/store" },
     { title: "About", href: "/about" },
-    { title: "cart", href: "/cart" },
   ];
   return (
     <nav className="shadow p-4 bg-gray">
       <Container>
-        <div className="flex flex-row-reverse">
-          {navLinks.map((item) => (
+        <div className="flex justify-between">
+          <div>
+            {navLinks.map((item) => (
+              <Link
+                href={item.href}
+                key={item.href}
+                className={`mr-12 ${
+                  pathname === item.href ? "text-sky-500" : ""
+                }`}
+              >
+                {item.title}
+              </Link>
+            ))}
+          </div>
+          <div>
             <Link
-              href={item.href}
-              key={item.href}
-              className={`mr-12 ${
-                pathname === item.href ? "text-sky-500" : ""
-              }`}
+              href="/cart"
+              className="bg-sky-200 p-2 mr-8 rounded hover:bg-sky-600 hover:text-white"
             >
-              {item.title}
+              By product
             </Link>
-          ))}
+            Total of Products :
+            <span className="bg-red-400 rounded-full ml-2 text-white px-3 py-2">
+              {cartTotalQty}
+            </span>
+          </div>
         </div>
       </Container>
     </nav>

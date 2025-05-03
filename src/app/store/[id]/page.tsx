@@ -1,6 +1,7 @@
 import Container from "@/components/Container";
 import React from "react";
 import { IProductItemProps } from "@/components/ProductItem";
+import IncDicButton from "@/components/IncDicButton";
 interface IProductsParams {
   params: Promise<{ id: string }>;
   searchParams: Promise<{}>;
@@ -12,23 +13,15 @@ async function Product({ params }: IProductsParams) {
 
   return (
     <Container>
-      <div className=" grid grid-cols-12 mt-8 shadow-2xl">
-        <div className="col-span-9 bg-sky-200 p-2 h-48">
+      <div className=" grid grid-cols-12 mt-8 shadow-xl rounded-md">
+        <div className="col-span-9 p-2 h-54">
           <h1 className="text-bold text-2xl"> Product details 👇</h1>
           <h2 className="font-bold text-bl">{data.title}</h2>
           <p>{data.describtion}</p>
           <p className="font-bold mt-4">
             price <span>{data.price}</span>
           </p>
-          <div className="mt-6">
-            <button className="bg-sky-500 px-6 py-1 rounded text-white">
-              +
-            </button>
-            <span className="mx-5">3</span>
-            <button className="bg-sky-500 px-6 py-1 rounded text-white">
-              -
-            </button>
-          </div>
+          <IncDicButton id={id} />
         </div>
         <div className="col-span-3 bg-gray-200 h-48">
           <img src={data.image} alt="product image" />

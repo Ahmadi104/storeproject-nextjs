@@ -11,6 +11,25 @@ function Cart() {
         <CartItem />
         <CartItem />
       </div>
+      <div className="bg-gray-100 border shadow-md p-4">
+        <h3>
+          Total Price: <span>70$</span>
+        </h3>
+        <h3>
+          Your Profit: <span>30$</span>
+        </h3>
+        <h3>
+          Final Pirce: <span>40$</span>
+        </h3>
+        <input
+          type="text"
+          className="border rounded bg-gray-200"
+          placeholder="inser your discound code"
+        />
+        <button className="bg-sky-500 rounded-md py-1 px-8 ml-2 text-white">
+          Do
+        </button>
+      </div>
     </Container>
   );
 }
