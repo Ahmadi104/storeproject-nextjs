@@ -14,7 +14,7 @@ async function Product({ params }: IProductsParams) {
   return (
     <Container>
       <div className=" grid grid-cols-12 mt-8 shadow-xl rounded-md">
-        <div className="col-span-9 p-2 h-54">
+        <div className="col-span-9 p-2 h-64">
           <h1 className="text-bold text-2xl"> Product details 👇</h1>
           <h2 className="font-bold text-bl">{data.title}</h2>
           <p>{data.describtion}</p>
