@@ -2,10 +2,12 @@ import Container from "@/components/Container";
 import React from "react";
 import { IProductItemProps } from "@/components/ProductItem";
 import IncDicButton from "@/components/IncDicButton";
+
 interface IProductsParams {
   params: Promise<{ id: string }>;
   searchParams: Promise<{}>;
 }
+
 async function Product({ params }: IProductsParams) {
   const { id } = await params;
   const results = await fetch(`http://localhost:3001/products/${id}`);
@@ -13,18 +15,32 @@ async function Product({ params }: IProductsParams) {
 
   return (
     <Container>
-      <div className=" grid grid-cols-12 mt-8 shadow-xl rounded-md">
-        <div className="col-span-9 p-2 h-64">
-          <h1 className="text-bold text-2xl"> Product details 👇</h1>
-          <h2 className="font-bold text-bl">{data.title}</h2>
-          <p>{data.describtion}</p>
-          <p className="font-bold mt-4">
-            price <span>{data.price}</span>
-          </p>
-          <IncDicButton id={id} />
+      <div
+        className="grid grid-cols-1 lg:grid-cols-3 gap-8 mt-10 
+        bg-white shadow-xl rounded-2xl p-8"
+      >
+        <div className="lg:col-span-1">
+          <img
+            src={data.image}
+            alt={data.title}
+            className="w-full h-[400px] object-cover rounded-2xl shadow-md"
+          />
         </div>
-        <div className="col-span-3 bg-gray-200 h-48">
-          <img src={data.image} alt="product image" />
+
+        <div className="lg:col-span-2 flex flex-col justify-between">
+          <div>
+            <h1 className="text-3xl font-bold mb-4 text-slate-800">
+              {data.title}
+            </h1>
+            <p className="text-slate-600 text-base mb-6">{data.describtion}</p>
+            <p className="text-2xl font-bold text-sky-600 mb-6">
+              Price: ${data.price}
+            </p>
+          </div>
+
+          <div>
+            <IncDicButton id={id} />
+          </div>
         </div>
       </div>
     </Container>

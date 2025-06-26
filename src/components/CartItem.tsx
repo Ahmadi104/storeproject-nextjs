@@ -16,7 +16,7 @@ function CartItem({ id, qty }: ICartItemProps) {
     });
   }, [id]);
   return (
-    <div className="grid grid-cols-1 md:grid-cols-12 gap-6 items-center bg-red-400 rounded-2xl shadow-md p-4 md:p-8 mb-8">
+    <div className="grid grid-cols-1 md:grid-cols-12 gap-6 items-center rounded-2xl shadow-lg shadow-gray-300 p-4 md:p-8 mb-8">
       <div className="md:col-span-9 space-y-4">
         <h1 className="text-2xl font-bold">{data.title}</h1>
         <p className="text-gray-600">
@@ -32,7 +32,7 @@ function CartItem({ id, qty }: ICartItemProps) {
         <img
           src={data.image}
           alt={data.title}
-          className="object-contain h-40 w-40 md:h-60 md:w-60 rounded-xl"
+          className="object-contain h-40 w-40 md:h-60 md:w-60 rounded-md"
         />
       </div>
     </div>

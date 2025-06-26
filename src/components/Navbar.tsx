@@ -15,7 +15,7 @@ function Navbar() {
     { title: "Home", href: "/" },
     { title: "Store", href: "/store" },
     { title: "About", href: "/about" },
-    { title: "Dashboard", href: "/dashboard" },
+    { title: "Creat Product", href: "/dashboard" },
     { title: "Login", href: "/login" },
   ];
 
@@ -27,7 +27,7 @@ function Navbar() {
             <Link
               href="/cart"
               className="flex items-center gap-2 bg-sky-100 text-sky-700 
-  px-4 py-2 rounded-xl hover:bg-sky-600 hover:text-white transition"
+                         px-4 py-2 rounded-xl hover:bg-sky-600 hover:text-white transition"
             >
               <FiShoppingCart className="text-xl" />
               Cart
