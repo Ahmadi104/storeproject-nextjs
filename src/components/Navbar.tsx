@@ -1,15 +1,16 @@
 "use client";
 import Link from "next/link";
 import { redirect, usePathname } from "next/navigation";
-
 import React from "react";
 import Container from "./Container";
 import { useShoppingCartContext } from "@/context/ShopingCartContext";
 import Cookies from "js-cookie";
+import { FiShoppingCart } from "react-icons/fi";
 
 function Navbar() {
   const { cartTotalQty } = useShoppingCartContext();
   const pathname = usePathname();
+
   const navLinks = [
     { title: "Home", href: "/" },
     { title: "Store", href: "/store" },
@@ -17,38 +18,49 @@ function Navbar() {
     { title: "Dashboard", href: "/dashboard" },
     { title: "Login", href: "/login" },
   ];
+
   return (
-    <nav className="shadow p-4 bg-gray">
+    <nav className="shadow-md bg-white">
       <Container>
-        <div className="flex justify-between items-center">
-          <div>
+        <div className="flex flex-col md:flex-row justify-between items-center gap-4 py-4">
+          <div className="flex items-center gap-4">
             <Link
               href="/cart"
-              className="bg-sky-200 p-2 mr-8 rounded hover:bg-sky-600 hover:text-white"
+              className="flex items-center gap-2 bg-sky-100 text-sky-700 
+  px-4 py-2 rounded-xl hover:bg-sky-600 hover:text-white transition"
             >
-              Shopping Cart
+              <FiShoppingCart className="text-xl" />
+              Cart
             </Link>
-            Total of Products :
-            <span className=" rounded-full ml-2 px-3 py-2">{cartTotalQty}</span>
+
+            <div className="flex items-center gap-2">
+              <span className="text-slate-700">Total:</span>
+              <span className="bg-sky-500 text-white rounded-full px-3 py-1 text-sm font-semibold">
+                {cartTotalQty}
+              </span>
+            </div>
           </div>
-          <div className="ml-auto flex space-x-12">
+
+          <div className="flex gap-8">
             {navLinks.map((item) => (
               <Link
                 href={item.href}
                 key={item.href}
-                className={`mr-12 ${
-                  pathname === item.href ? "text-sky-700" : ""
+                className={`text-slate-800 hover:text-sky-600 transition ${
+                  pathname === item.href ? "text-sky-800 font-semibold" : ""
                 }`}
               >
                 {item.title}
               </Link>
             ))}
           </div>
+
           <button
             onClick={() => {
               Cookies.remove("token");
               redirect("/login");
             }}
+            className="bg-red-100 text-red-600 px-4 py-2 rounded-xl hover:bg-red-600 hover:text-white transition"
           >
             Logout
           </button>

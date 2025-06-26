@@ -2,6 +2,7 @@
 import { useRouter, useSearchParams } from "next/navigation";
 import React from "react";
 import ReactPaginate from "react-paginate";
+
 function Pagination({ pageCount }: { pageCount: number }) {
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -15,14 +16,19 @@ function Pagination({ pageCount }: { pageCount: number }) {
   return (
     <div>
       <ReactPaginate
-        className=" rounded-md text-xl my-8 flex gap-8 hover:cursor-pointer"
-        nextLabel="next >"
+        className="flex justify-center items-center gap-6 my-12 text-slate-700"
+        nextLabel="Next >"
+        previousLabel="< Prev"
+        pageRangeDisplayed={3}
         pageCount={pageCount}
-        onPageChange={handlePageClick}
         breakLabel="..."
-        previousLabel="< previous"
-        pageRangeDisplayed={5}
         renderOnZeroPageCount={null}
+        onPageChange={handlePageClick}
+        activeClassName="bg-sky-600 text-white"
+        pageClassName=" border-slate-200 rounded-full px-4 py-2 hover:bg-sky-100 hover:text-sky-600 transition"
+        previousClassName="border border-slate-200 rounded-full cursor-pointer px-4 py-2 hover:bg-sky-100 hover:text-sky-600 transition"
+        nextClassName="border border-slate-200 rounded-full cursor-pointer px-4 py-2 hover:bg-sky-100 hover:text-sky-600 transition"
+        breakClassName="px-3 py-2"
       />
     </div>
   );

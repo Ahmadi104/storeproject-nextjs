@@ -1,6 +1,7 @@
 "use client";
 import { useRouter, useSearchParams } from "next/navigation";
 import React, { useState } from "react";
+import { FiSearch } from "react-icons/fi";
 
 function Search() {
   const [search, setSearch] = useState("");
@@ -12,18 +13,21 @@ function Search() {
     router.push(`/store?${currentSearchParams.toString()}`);
   };
   return (
-    <div className="my-8 mx-auto">
+    <div className="flex flex-col md:flex-row items-center justify-center gap-4 my-8">
       <input
         type="text"
-        placeholder="search product"
-        className="p-2 bg-gray-100 rounded-3xl w-[900px]"
+        placeholder="Search product title..."
+        className="w-[90%] md:w-[600px] px-6 py-3 bg-slate-200 rounded-full 
+    focus:outline-none focus:ring-2 focus:ring-sky-500 shadow-sm transition"
         onChange={(e) => setSearch(e.target.value)}
       />
       <button
-        className="bg-sky-500 px-4 py-2 rounded-md text-white ml-4"
         onClick={handleSearch}
+        className="flex items-center gap-2 bg-sky-500 hover:bg-sky-600 
+    text-white px-6 py-3 rounded-full shadow-md transition"
       >
-        search
+        <FiSearch className="text-xl" />
+        Search
       </button>
     </div>
   );
